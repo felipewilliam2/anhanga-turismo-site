@@ -88,7 +88,7 @@
 
         /* --- Seção Hero (Destaque Principal) --- */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?brazil,nature') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(\'hero-background.jpg\')no-repeat center center/cover;
             color: var(--cor-branco);
             text-align: center;
             padding: 120px 0;
@@ -221,6 +221,23 @@
             }
         }
 
+        /* --- Social Icons --- */
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
@@ -253,21 +270,21 @@
                 <h2 style="text-align: center;">Destinos Populares</h2>
                 <div class="destinos-grid">
                     <div class="destino-card">
-                        <img src="https://source.unsplash.com/400x300/?jalapao" alt="Parque Estadual do Jalapão">
+                        <img src="jalapao.jpg" alt="Parque Estadual do Jalapão">
                         <div class="destino-card-content">
                             <h3>Jalapão, Tocantins</h3>
                             <p>Aventura e paisagens deslumbrantes no coração do Brasil. Fervedouros, dunas e cachoeiras esperam por você.</p>
                         </div>
                     </div>
                     <div class="destino-card">
-                        <img src="https://source.unsplash.com/400x300/?chapada-diamantina" alt="Chapada Diamantina">
+                        <img src="porto-seguro.png" alt="Chapada Diamantina">
                         <div class="destino-card-content">
-                            <h3>Chapada Diamantina, Bahia</h3>
-                            <p>Trilhas, grutas e cachoeiras espetaculares. Um paraíso para amantes do ecoturismo e da natureza.</p>
+                            <h3>Porto Seguro, Bahia</h3>
+                            <p>Onde a história do Brasil encontra praias paradisíacas e a alegria contagiante do axé.</p>
                         </div>
                     </div>
                     <div class="destino-card">
-                        <img src="https://source.unsplash.com/400x300/?lencois-maranhenses" alt="Lençóis Maranhenses">
+                        <img src="lencois-maranhenses.png" alt="Lençóis Maranhenses">
                         <div class="destino-card-content">
                             <h3>Lençóis Maranhenses, MA</h3>
                             <p>Um cenário único no mundo, com dunas de areia branca e lagoas de água cristalina. Uma experiência surreal.</p>
@@ -279,7 +296,7 @@
 
         <section id="sobre" class="sobre-nos">
             <div class="container">
-                <img src="https://source.unsplash.com/800x600/?travel-guide,brazil" alt="Guia de turismo explicando um mapa">
+                <img src="sobre-nos.png" alt="Guia de turismo explicando um mapa">
                 <div>
                     <h2>Apaixonados por Viagens, Especialistas no Brasil</h2>
                     <p>A Anhangá Turismo nasceu do desejo de compartilhar as maravilhas do nosso país. Não vendemos apenas pacotes, criamos roteiros personalizados que transformam uma simples viagem em uma memória para a vida toda.</p>
@@ -305,7 +322,13 @@
             <h2>Pronto para a Aventura?</h2>
             <p>Entre em contato conosco e vamos planejar sua próxima viagem.</p>
             <p><strong>Email:</strong> <a href="mailto:contato@anhangaturismo.com.br">contato@anhangaturismo.com.br</a></p>
-            <p><strong>Telefone/WhatsApp:</strong> <a href="tel:+5511999998888">(11) 99999-8888</a></p>
+            <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/551152833309"><img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp Icon" style="vertical-align: middle; margin-right: 5px;"></a> <a href="tel:+551152833309">(11) 5283-3309</a></p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/people/Anhang%C3%A1-Turismo/61577955723311/" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/anhangatur/" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/company/anhangatur" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.tiktok.com/@anhangatur?_t=ZM-8xs9gUNoEOG&_r=1" target="_blank"><img src="https://img.icons8.com/color/48/000000/tiktok--v1.png" alt="TikTok"></a>
+            </div>
             <br>
             <p>&copy; 2025 Anhangá Turismo. Todos os direitos reservados.</p>
         </div>
@@ -314,3 +337,23 @@
 </body>
 </html>
 
+
+
+        /* --- Social Icons --- */
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
