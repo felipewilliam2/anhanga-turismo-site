@@ -253,10 +253,10 @@ class CookieConsent {
     loadGoogleAnalytics() {
         if (window.gtag) return; // Already loaded
         
-        // Replace 'GA_MEASUREMENT_ID' with your actual Google Analytics ID
+        // Google Analytics ID: G-52QZJ03XQV
         const script1 = document.createElement('script');
         script1.async = true;
-        script1.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+        script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-52QZJ03XQV';
         document.head.appendChild(script1);
         
         const script2 = document.createElement('script');
@@ -264,7 +264,7 @@ class CookieConsent {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID', {
+            gtag('config', 'G-52QZJ03XQV', {
                 anonymize_ip: true,
                 cookie_flags: 'SameSite=None;Secure'
             });
@@ -275,7 +275,7 @@ class CookieConsent {
     loadMetaPixel() {
         if (window.fbq) return; // Already loaded
         
-        // Replace 'YOUR_PIXEL_ID' with your actual Meta Pixel ID
+        // Meta Pixel ID: 1238726064652513
         const script = document.createElement('script');
         script.innerHTML = `
             !function(f,b,e,v,n,t,s)
@@ -286,14 +286,14 @@ class CookieConsent {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', 'YOUR_PIXEL_ID');
+            fbq('init', '1238726064652513');
             fbq('track', 'PageView');
         `;
         document.head.appendChild(script);
         
         // Add noscript fallback
         const noscript = document.createElement('noscript');
-        noscript.innerHTML = '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" />';
+        noscript.innerHTML = '<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1238726064652513&ev=PageView&noscript=1" />';
         document.body.appendChild(noscript);
     }
     
