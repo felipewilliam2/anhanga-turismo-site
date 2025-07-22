@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anhangá Turismo - Viagens e Experiências Inesquecíveis</title>
+    <meta name="description" content="Descubra o Brasil com a Anhangá Turismo. Pacotes de viagem personalizados, ecoturismo e as melhores experiências em destinos incríveis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <style>
+        /* --- Configurações Gerais e Reset --- */
+        :root {
+            --cor-principal: #004d40; /* Verde escuro - pode ser alterado */
+            --cor-secundaria: #ffab40; /* Laranja/Amarelo para destaque */
+            --cor-texto: #333;
+            --cor-fundo: #f4f4f4;
+            --cor-branco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--cor-texto);
+            background-color: var(--cor-branco);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--cor-principal);
+            margin-bottom: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- Header (Cabeçalho) --- */
+        .main-header {
+            background: var(--cor-branco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--cor-principal);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--cor-secundaria);
+        }
+
+        /* --- Seção Hero (Destaque Principal) --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-background.jpg') no-repeat center center/cover;
+            color: var(--cor-branco);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            color: var(--cor-branco);
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-principal);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #ffc107;
+        }
+        
+        /* --- Seção de Destinos --- */
+        .destinos {
+            background-color: var(--cor-fundo);
+        }
+        .destinos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .destino-card {
+            background: var(--cor-branco);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .destino-card:hover {
+            transform: translateY(-5px);
+        }
+        .destino-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .destino-card-content {
+            padding: 25px;
+        }
+        .destino-card-content h3 {
+            margin-top: 0;
+        }
+
+        /* --- Seção Sobre Nós --- */
+        .sobre-nos .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .sobre-nos img {
+            max-width: 40%;
+            border-radius: 8px;
+        }
+
+        /* --- Seção de Depoimentos --- */
+        .depoimentos {
+            background-color: var(--cor-principal);
+            color: var(--cor-branco);
+            text-align: center;
+        }
+        .depoimentos h2 {
+            color: var(--cor-branco);
+        }
+        .depoimento {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .depoimento blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .depoimento cite {
+            font-weight: 600;
+        }
+        
+        /* --- Rodapé --- */
+        .main-footer {
+            background-color: #333;
+            color: var(--cor-branco);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .main-footer a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+        }
+
+        /* --- Responsividade para Mobile --- */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .sobre-nos .container {
+                flex-direction: column;
+            }
+            .sobre-nos img {
+                max-width: 100%;
+            }
+        }
+
+        /* --- Social Icons --- */
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo"><img src="logo.png" alt="Anhangá Turismo" style="height: 50px; width: auto;"></a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#destinos">Destinos</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Seu Próximo Destino Começa Aqui</h1>
+                <p>Exploramos o Brasil para oferecer a você viagens autênticas e inesquecíveis.</p>
+                <a href="https://www.comprarviagem.com.br/anhangatur" class="cta-button" target="_blank">Compre Online</a>
+            </div>
+        </section>
+
+        <section id="destinos" class="destinos">
+            <div class="container">
+                <h2 style="text-align: center;">Destinos Populares</h2>
+                <div class="destinos-grid">
+                    <div class="destino-card">
+                        <img src="jalapao.jpg" alt="Parque Estadual do Jalapão">
+                        <div class="destino-card-content">
+                            <h3>Jalapão, Tocantins</h3>
+                            <p>Aventura e paisagens deslumbrantes no coração do Brasil. Fervedouros, dunas e cachoeiras esperam por você.</p>
+                        </div>
+                    </div>
+                    <div class="destino-card">
+                        <img src="porto-seguro.png" alt="Chapada Diamantina">
+                        <div class="destino-card-content">
+                            <h3>Porto Seguro, Bahia</h3>
+                            <p>Onde a história do Brasil encontra praias paradisíacas e a alegria contagiante do axé.</p>
+                        </div>
+                    </div>
+                    <div class="destino-card">
+                        <img src="lencois-maranhenses.png" alt="Lençóis Maranhenses">
+                        <div class="destino-card-content">
+                            <h3>Lençóis Maranhenses, MA</h3>
+                            <p>Um cenário único no mundo, com dunas de areia branca e lagoas de água cristalina. Uma experiência surreal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre-nos">
+            <div class="container">
+                <img src="sobre-nos.png" alt="Guia de turismo explicando um mapa">
+                <div>
+                    <h2>Apaixonados por Viagens, Especialistas no Brasil</h2>
+                    <p>A Anhangá Turismo nasceu do desejo de compartilhar as maravilhas do nosso país. Não vendemos apenas pacotes, criamos roteiros personalizados que transformam uma simples viagem em uma memória para a vida toda.</p>
+                    <p>Nossa equipe é formada por especialistas que conhecem cada detalhe dos destinos que oferecemos, garantindo segurança, conforto e uma imersão cultural completa.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="depoimentos">
+            <div class="container">
+                <h2>O que nossos viajantes dizem</h2>
+                <div class="depoimento">
+                    <blockquote>"A viagem para a Alemanha com a Anhangá foi a melhor da minha vida! Organização impecável. Recomendo de olhos fechados!"</blockquote>
+                    <cite>– William S., São Paulo/SP</cite>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contato" class="main-footer">
+        <div class="container">
+            <h2>Pronto para a Aventura?</h2>
+            <p>Entre em contato conosco e vamos planejar sua próxima viagem.</p>
+            <p><strong>Email:</strong> <a href="mailto:contato@anhangaturismo.com.br">contato@anhangaturismo.com.br</a></p>
+            <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/551152833309"><img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp Icon" style="vertical-align: middle; margin-right: 5px;"></a> <a href="tel:+551152833309">(11) 5283-3309</a></p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/people/Anhang%C3%A1-Turismo/61577955723311/" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/anhangatur/" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/company/anhangatur" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.tiktok.com/@anhangatur?_t=ZM-8xs9gUNoEOG&_r=1" target="_blank"><img src="https://img.icons8.com/color/48/000000/tiktok--v1.png" alt="TikTok"></a>
+            </div>
+            <br>
+            <p>&copy; 2025 Anhangá Turismo. Todos os direitos reservados. Desenvolvido com paixão pela aventura.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+    </style>

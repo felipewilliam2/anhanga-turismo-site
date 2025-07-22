@@ -3,343 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anhangá Turismo - Viagens e Experiências Inesquecíveis</title>
+    <title>Anhangá Turismo - Seu Próximo Destino Começa Aqui</title>
     <meta name="description" content="Descubra o Brasil com a Anhangá Turismo. Pacotes de viagem personalizados, ecoturismo e as melhores experiências em destinos incríveis.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <style>
-        /* --- Configurações Gerais e Reset --- */
-        :root {
-            --cor-principal: #004d40; /* Verde escuro - pode ser alterado */
-            --cor-secundaria: #ffab40; /* Laranja/Amarelo para destaque */
-            --cor-texto: #333;
-            --cor-fundo: #f4f4f4;
-            --cor-branco: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--cor-texto);
-            background-color: var(--cor-branco);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1, h2, h3 {
-            color: var(--cor-principal);
-            margin-bottom: 20px;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        /* --- Header (Cabeçalho) --- */
-        .main-header {
-            background: var(--cor-branco);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cor-principal);
-            text-decoration: none;
-        }
-
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: var(--cor-principal);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .main-nav a:hover {
-            color: var(--cor-secundaria);
-        }
-
-        /* --- Seção Hero (Destaque Principal) --- */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-background.jpg') no-repeat center center/cover;
-            color: var(--cor-branco);
-            text-align: center;
-            padding: 120px 0;
-        }
-
-        .hero h1 {
-            color: var(--cor-branco);
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            background-color: var(--cor-secundaria);
-            color: var(--cor-principal);
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            background-color: #ffc107;
-        }
-        
-        /* --- Seção de Destinos --- */
-        .destinos {
-            background-color: var(--cor-fundo);
-        }
-        .destinos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .destino-card {
-            background: var(--cor-branco);
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .destino-card:hover {
-            transform: translateY(-5px);
-        }
-        .destino-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .destino-card-content {
-            padding: 25px;
-        }
-        .destino-card-content h3 {
-            margin-top: 0;
-        }
-
-        /* --- Seção Sobre Nós --- */
-        .sobre-nos .container {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-        .sobre-nos img {
-            max-width: 40%;
-            border-radius: 8px;
-        }
-
-        /* --- Seção de Depoimentos --- */
-        .depoimentos {
-            background-color: var(--cor-principal);
-            color: var(--cor-branco);
-            text-align: center;
-        }
-        .depoimentos h2 {
-            color: var(--cor-branco);
-        }
-        .depoimento {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .depoimento blockquote {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        .depoimento cite {
-            font-weight: 600;
-        }
-        
-        /* --- Rodapé --- */
-        .main-footer {
-            background-color: #333;
-            color: var(--cor-branco);
-            padding: 40px 0;
-            text-align: center;
-        }
-        .main-footer a {
-            color: var(--cor-secundaria);
-            text-decoration: none;
-        }
-
-        /* --- Responsividade para Mobile --- */
-        @media (max-width: 768px) {
-            .main-header .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .sobre-nos .container {
-                flex-direction: column;
-            }
-            .sobre-nos img {
-                max-width: 100%;
-            }
-        }
-
-        /* --- Social Icons --- */
-        .social-icons {
-            margin-top: 20px;
-        }
-        .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-        .social-icons a:hover {
-            transform: scale(1.1);
-        }
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo"><img src="logo.png" alt="Anhangá Turismo" style="height: 50px; width: auto;"></a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#destinos">Destinos</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#contato">Contato</a></li>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <img src="logo.png" alt="Anhangá Turismo" style="height: 50px; width: auto;">
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#home" class="nav__link active-link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#destinos" class="nav__link">Destinos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#sobre" class="nav__link">Sobre Nós</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#blog" class="nav__link">Blog</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contato" class="nav__link">Contato</a>
+                    </li>
                 </ul>
-            </nav>
-        </div>
+                <div class="nav__close" id="nav-close">
+                    <span>✕</span>
+                </div>
+            </div>
+            <div class="nav__actions">
+                <button class="btn btn--primary" id="orcamento-btn">Orçamento</button>
+                <div class="nav__toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-
-        <section class="hero">
-            <div class="container">
-                <h1>Seu Próximo Destino Começa Aqui</h1>
-                <p>Exploramos o Brasil para oferecer a você viagens autênticas e inesquecíveis.</p>
-                <a href="https://www.comprarviagem.com.br/anhangatur" class="cta-button" target="_blank">Compre Online</a>
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section class="home section" id="home">
+            <div class="home__container container">
+                <div class="home__content">
+                    <h1 class="home__title">Seu Próximo Destino Começa Aqui</h1>
+                    <p class="home__description">Exploramos o Brasil para oferecer a você viagens autênticas e inesquecíveis</p>
+                    <a href="https://www.comprarviagem.com.br/anhangatur" class="btn btn--primary btn--lg home__cta" target="_blank">Compre Online</a>
+                </div>
+                <div class="home__hero"></div>
             </div>
         </section>
 
-        <section id="destinos" class="destinos">
+        <!-- Destinos Populares -->
+        <section class="destinos-populares section">
             <div class="container">
-                <h2 style="text-align: center;">Destinos Populares</h2>
-                <div class="destinos-grid">
-                    <div class="destino-card">
-                        <img src="jalapao.jpg" alt="Parque Estadual do Jalapão">
-                        <div class="destino-card-content">
-                            <h3>Jalapão, Tocantins</h3>
-                            <p>Aventura e paisagens deslumbrantes no coração do Brasil. Fervedouros, dunas e cachoeiras esperam por você.</p>
+                <h2 class="section__title">Destinos Populares</h2>
+                <p class="section__subtitle">Explore os destinos mais procurados do Brasil</p>
+                <div class="destinos__grid" id="destinos-populares">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Destinos Section -->
+        <section class="destinos section" id="destinos">
+            <div class="container">
+                <h2 class="section__title">Todos os Destinos</h2>
+                <div class="destinos__filters">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="aventura">Aventura</button>
+                    <button class="filter-btn" data-filter="praia">Praia</button>
+                    <button class="filter-btn" data-filter="cultural">Cultural</button>
+                    <button class="filter-btn" data-filter="natureza">Natureza</button>
+                    <button class="filter-btn" data-filter="ecoturismo">Ecoturismo</button>
+                </div>
+                <div class="destinos__grid" id="destinos-grid">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nós Section -->
+        <section class="sobre section" id="sobre">
+            <div class="container">
+                <div class="sobre__content">
+                    <div class="sobre__text">
+                        <h2 class="section__title">Sobre Nós</h2>
+                        <p>A Anhangá Turismo nasceu da paixão por mostrar as maravilhas do nosso país. Com mais de 10 anos de experiência no turismo, somos especialistas em criar roteiros únicos e personalizados que revelam o verdadeiro Brasil.</p>
+                        <p>Nossa equipe de consultores especializados conhece cada destino pessoalmente, garantindo que sua viagem seja planejada nos mínimos detalhes para proporcionar experiências autênticas e inesquecíveis.</p>
+                        <div class="sobre__stats">
+                            <div class="stat">
+                                <h3>+100</h3>
+                                <p>Clientes Satisfeitos</p>
+                            </div>
+                            <div class="stat">
+                                <h3>+50</h3>
+                                <p>Destinos</p>
+                            </div>
+                            <div class="stat">
+                                <h3>10+</h3>
+                                <p>Anos de Experiência</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="destino-card">
-                        <img src="porto-seguro.png" alt="Chapada Diamantina">
-                        <div class="destino-card-content">
-                            <h3>Porto Seguro, Bahia</h3>
-                            <p>Onde a história do Brasil encontra praias paradisíacas e a alegria contagiante do axé.</p>
+                    <div class="sobre__image">
+                        <img src="sobre-nos.png" alt="Equipe Anhangá Turismo" style="width: 100%; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="depoimentos section">
+            <div class="container">
+                <h2 class="section__title">O que Nossos Clientes Dizem</h2>
+                <div class="depoimentos__grid" id="depoimentos-grid">
+                    <!-- Depoimentos serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog section" id="blog">
+            <div class="container">
+                <div class="blog__header">
+                    <h2 class="section__title">Blog</h2>
+                    <div class="blog__search">
+                        <input type="text" class="form-control" placeholder="Buscar artigos..." id="blog-search">
+                    </div>
+                </div>
+                <div class="blog__content">
+                    <div class="blog__main">
+                        <div class="blog__filters">
+                            <button class="filter-btn active" data-category="todas">Todas</button>
+                            <button class="filter-btn" data-category="Destinos Nacionais">Destinos Nacionais</button>
+                            <button class="filter-btn" data-category="Dicas de Viagem">Dicas de Viagem</button>
+                            <button class="filter-btn" data-category="Ecoturismo">Ecoturismo</button>
+                            <button class="filter-btn" data-category="Aventura">Aventura</button>
+                            <button class="filter-btn" data-category="Praias">Praias</button>
+                        </div>
+                        <div class="blog__grid" id="blog-grid">
+                            <!-- Artigos serão inseridos via JavaScript -->
                         </div>
                     </div>
-                    <div class="destino-card">
-                        <img src="lencois-maranhenses.png" alt="Lençóis Maranhenses">
-                        <div class="destino-card-content">
-                            <h3>Lençóis Maranhenses, MA</h3>
-                            <p>Um cenário único no mundo, com dunas de areia branca e lagoas de água cristalina. Uma experiência surreal.</p>
+                    <div class="blog__sidebar">
+                        <div class="widget">
+                            <h3>Categorias</h3>
+                            <ul class="category-list">
+                                <li><a href="#" data-category="Destinos Nacionais">Destinos Nacionais</a></li>
+                                <li><a href="#" data-category="Dicas de Viagem">Dicas de Viagem</a></li>
+                                <li><a href="#" data-category="Ecoturismo">Ecoturismo</a></li>
+                                <li><a href="#" data-category="Aventura">Aventura</a></li>
+                                <li><a href="#" data-category="Praias">Praias</a></li>
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            <h3>Posts Populares</h3>
+                            <div class="popular-posts" id="popular-posts">
+                                <!-- Posts populares serão inseridos via JavaScript -->
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <h3>Newsletter</h3>
+                            <p>Receba dicas de viagem e ofertas especiais</p>
+                            <form class="newsletter-form">
+                                <input type="email" class="form-control" placeholder="Seu email" required>
+                                <button type="submit" class="btn btn--primary btn--full-width">Assinar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="sobre" class="sobre-nos">
+        <!-- Contato Section -->
+        <section class="contato section" id="contato">
             <div class="container">
-                <img src="sobre-nos.png" alt="Guia de turismo explicando um mapa">
-                <div>
-                    <h2>Apaixonados por Viagens, Especialistas no Brasil</h2>
-                    <p>A Anhangá Turismo nasceu do desejo de compartilhar as maravilhas do nosso país. Não vendemos apenas pacotes, criamos roteiros personalizados que transformam uma simples viagem em uma memória para a vida toda.</p>
-                    <p>Nossa equipe é formada por especialistas que conhecem cada detalhe dos destinos que oferecemos, garantindo segurança, conforto e uma imersão cultural completa.</p>
+                <h2 class="section__title">Entre em Contato</h2>
+                <div class="contato__content">
+                    <div class="contato__info">
+                        <h3>Informações de Contato</h3>
+                        <div class="contact-item">
+                            <strong>Telefone/WhatsApp:</strong>
+                            <p><a href="https://wa.me/5511528333309" target="_blank">(11) 5283-3309</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong>
+                            <p>contato@anhangaturismo.com.br</p>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Horário de Funcionamento:</strong>
+                            <p>Segunda a Sexta: 9h às 18h<br>Sábado: 10h às 14h</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" target="_blank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 30px; height: 30px;">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 30px; height: 30px;">
+                            </a>
+                            <a href="https://wa.me/5511528333309" target="_blank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 30px; height: 30px;">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                            </a>
+                            <a href="#" target="_blank">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 30px; height: 30px;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contato__form">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Seu email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Seu telefone">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option value="">Selecione o assunto</option>
+                                    <option value="orcamento">Solicitar Orçamento</option>
+                                    <option value="informacoes">Informações sobre Destinos</option>
+                                    <option value="suporte">Suporte</option>
+                                    <option value="outros">Outros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="Sua mensagem" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width">Enviar Mensagem</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section class="depoimentos">
-            <div class="container">
-                <h2>O que nossos viajantes dizem</h2>
-                <div class="depoimento">
-                    <blockquote>"A viagem para a Alemanha com a Anhangá foi a melhor da minha vida! Organização impecável. Recomendo de olhos fechados!"</blockquote>
-                    <cite>– William S., São Paulo/SP</cite>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <footer id="contato" class="main-footer">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <h2>Pronto para a Aventura?</h2>
-            <p>Entre em contato conosco e vamos planejar sua próxima viagem.</p>
-            <p><strong>Email:</strong> <a href="mailto:contato@anhangaturismo.com.br">contato@anhangaturismo.com.br</a></p>
-            <p><strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/551152833309"><img src="https://img.icons8.com/color/24/000000/whatsapp--v1.png" alt="WhatsApp Icon" style="vertical-align: middle; margin-right: 5px;"></a> <a href="tel:+551152833309">(11) 5283-3309</a></p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/people/Anhang%C3%A1-Turismo/61577955723311/" target="_blank"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/anhangatur/" target="_blank"><img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram"></a>
-                <a href="https://www.linkedin.com/company/anhangatur" target="_blank"><img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.tiktok.com/@anhangatur?_t=ZM-8xs9gUNoEOG&_r=1" target="_blank"><img src="https://img.icons8.com/color/48/000000/tiktok--v1.png" alt="TikTok"></a>
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Anhangá Turismo</h3>
+                    <p>Exploramos o Brasil para oferecer a você viagens autênticas e inesquecíveis.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="https://wa.me/5511528333309" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 30px; height: 30px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinos">Destinos</a></li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Destinos Populares</h4>
+                    <ul>
+                        <li><a href="#">Jalapão</a></li>
+                        <li><a href="#">Porto Seguro</a></li>
+                        <li><a href="#">Lençóis Maranhenses</a></li>
+                        <li><a href="#">Gramado</a></li>
+                        <li><a href="#">Foz do Iguaçu</a></li>
+                        <li><a href="#">Bonito</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Newsletter</h4>
+                    <p>Receba ofertas especiais e dicas de viagem</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Seu email" required>
+                        <button type="submit" class="btn btn--primary">Assinar</button>
+                    </form>
+                </div>
             </div>
-            <br>
-            <p>&copy; 2025 Anhangá Turismo. Todos os direitos reservados. Desenvolvido com paixão pela aventura.</p>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Anhangá Turismo. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Modal para Orçamento -->
+    <div class="modal" id="orcamento-modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3>Solicitar Orçamento</h3>
+                <button class="modal__close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal__body">
+                <form class="orcamento-form" id="orcamento-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Seu email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Seu telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="">Destino de interesse</option>
+                            <option value="jalapao">Jalapão, Tocantins</option>
+                            <option value="porto-seguro">Porto Seguro, Bahia</option>
+                            <option value="lencois">Lençóis Maranhenses, MA</option>
+                            <option value="gramado">Gramado, RS</option>
+                            <option value="foz">Foz do Iguaçu, PR</option>
+                            <option value="bonito">Bonito, MS</option>
+                            <option value="chapada">Chapada Diamantina, BA</option>
+                            <option value="amazonia">Amazônia</option>
+                            <option value="pantanal">Pantanal, MT</option>
+                            <option value="ouro-preto">Ouro Preto, MG</option>
+                            <option value="buzios">Búzios, RJ</option>
+                            <option value="fernando-noronha">Fernando de Noronha, PE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="Data de partida">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="">Número de pessoas</option>
+                            <option value="1">1 pessoa</option>
+                            <option value="2">2 pessoas</option>
+                            <option value="3">3 pessoas</option>
+                            <option value="4">4 pessoas</option>
+                            <option value="5+">5+ pessoas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="Observações adicionais"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Solicitar Orçamento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
-    </style>
+
