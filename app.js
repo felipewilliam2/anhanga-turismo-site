@@ -440,7 +440,7 @@ function initForms() {
                 }
                 
                 // Enviar dados para o backend
-                const response = await fetch(`https://anhanga-email-backend.onrender.com${endpoint}`, {
+                const response = await fetch(`https://mzhyi8cneojx.manus.space${endpoint}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
