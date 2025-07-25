@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initForms();
     initFilters();
     initSearch();
+    checkFormSubmission();
 });
 
 // Navegação
@@ -481,4 +482,204 @@ function initScrollAnimations() {
 
 // Inicializar animações quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
+
+// Verificar se o formulário foi enviado
+function checkFormSubmission() {
+    // Verificar se há parâmetro na URL indicando que o formulário foi enviado
+    const urlParams = new URLSearchParams(window.location.search);
+    const formSubmitted = urlParams.get('orcamento');
+    
+    if (formSubmitted === 'enviado') {
+        // Criar e mostrar mensagem de sucesso
+        const successMessage = document.createElement('div');
+        successMessage.className = 'form-success-message';
+        successMessage.innerHTML = `
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h3>Orçamento Enviado com Sucesso!</h3>
+                <p>Agradecemos pelo seu interesse. Nossa equipe entrará em contato em breve.</p>
+                <button class="btn btn--primary close-success">Fechar</button>
+            </div>
+        `;
+        
+        document.body.appendChild(successMessage);
+        
+        // Adicionar estilo para a mensagem
+        const style = document.createElement('style');
+        style.textContent = `
+            .form-success-message {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .success-content {
+                background-color: white;
+                padding: 30px;
+                border-radius: 8px;
+                text-align: center;
+                max-width: 90%;
+                width: 400px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+            
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 30px;
+                margin: 0 auto 20px;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        `;
+        
+        document.head.appendChild(style);
+        
+        // Remover parâmetro da URL para evitar mostrar a mensagem ao atualizar
+        window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Fechar mensagem ao clicar no botão
+        document.querySelector('.close-success').addEventListener('click', function() {
+            document.body.removeChild(successMessage);
+        });
+    }
+}
+
+
+// Atualização da função checkFormSubmission para verificar também o formulário de contato
+function checkFormSubmission() {
+    // Verificar se há parâmetro na URL indicando que algum formulário foi enviado
+    const urlParams = new URLSearchParams(window.location.search);
+    const orcamentoSubmitted = urlParams.get('orcamento');
+    const contatoSubmitted = urlParams.get('contato');
+    
+    let title, message;
+    
+    if (orcamentoSubmitted === 'enviado') {
+        title = "Orçamento Enviado com Sucesso!";
+        message = "Agradecemos pelo seu interesse. Nossa equipe entrará em contato em breve com seu orçamento personalizado.";
+        showSuccessMessage(title, message);
+    } else if (contatoSubmitted === 'enviado') {
+        title = "Mensagem Enviada com Sucesso!";
+        message = "Obrigado por entrar em contato conosco. Responderemos o mais breve possível.";
+        showSuccessMessage(title, message);
+    }
+}
+
+// Função para mostrar mensagem de sucesso
+function showSuccessMessage(title, message) {
+    // Criar e mostrar mensagem de sucesso
+    const successMessage = document.createElement('div');
+    successMessage.className = 'form-success-message';
+    successMessage.innerHTML = `
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button class="btn btn--primary close-success">Fechar</button>
+        </div>
+    `;
+    
+    document.body.appendChild(successMessage);
+    
+    // Adicionar estilo para a mensagem
+    const style = document.createElement('style');
+    style.textContent = `
+        .form-success-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    `;
+    
+    document.head.appendChild(style);
+    
+    // Remover parâmetro da URL para evitar mostrar a mensagem ao atualizar
+    window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Fechar mensagem ao clicar no botão
+    document.querySelector('.close-success').addEventListener('click', function() {
+        document.body.removeChild(successMessage);
+    });
+}
+
+
+// Atualização da função checkFormSubmission para verificar também o formulário de newsletter
+function checkFormSubmission() {
+    // Verificar se há parâmetro na URL indicando que algum formulário foi enviado
+    const urlParams = new URLSearchParams(window.location.search);
+    const orcamentoSubmitted = urlParams.get('orcamento');
+    const contatoSubmitted = urlParams.get('contato');
+    const newsletterSubmitted = urlParams.get('newsletter');
+    
+    let title, message;
+    
+    if (orcamentoSubmitted === 'enviado') {
+        title = "Orçamento Enviado com Sucesso!";
+        message = "Agradecemos pelo seu interesse. Nossa equipe entrará em contato em breve com seu orçamento personalizado.";
+        showSuccessMessage(title, message);
+    } else if (contatoSubmitted === 'enviado') {
+        title = "Mensagem Enviada com Sucesso!";
+        message = "Obrigado por entrar em contato conosco. Responderemos o mais breve possível.";
+        showSuccessMessage(title, message);
+    } else if (newsletterSubmitted === 'enviado') {
+        title = "Inscrição Confirmada!";
+        message = "Você foi inscrito com sucesso em nossa newsletter. Em breve você receberá nossas melhores ofertas e dicas de viagem.";
+        showSuccessMessage(title, message);
+    }
+}
 

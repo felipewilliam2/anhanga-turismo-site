@@ -180,8 +180,12 @@
                         <div class="widget">
                             <h3>Newsletter</h3>
                             <p>Receba dicas de viagem e ofertas especiais</p>
-                            <form class="newsletter-form">
-                                <input type="email" class="form-control" placeholder="Seu email" required>
+                            <form class="newsletter-form" action="https://formsubmit.co/contato@anhanga.tur.br" method="POST">
+                                <input type="hidden" name="_subject" value="Nova Inscrição Newsletter - Anhangá Turismo">
+                                <input type="hidden" name="_captcha" value="true">
+                                <input type="hidden" name="_template" value="box">
+                                <input type="hidden" name="_next" value="https://anhanga.tur.br?newsletter=enviado">
+                                <input type="email" name="email" class="form-control" placeholder="Seu email" required>
                                 <button type="submit" class="btn btn--primary btn--full-width">Assinar</button>
                             </form>
                         </div>
@@ -228,18 +232,24 @@
                         </div>
                     </div>
                     <div class="contato__form">
-                        <form class="contact-form" id="contact-form">
+                        <form class="contact-form" id="contact-form" action="https://formsubmit.co/contato@anhanga.tur.br" method="POST">
+                            <!-- Configurações do Formsubmit -->
+                            <input type="hidden" name="_subject" value="Nova Mensagem de Contato - Anhangá Turismo">
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_next" value="https://anhanga.tur.br?contato=enviado">
+                            
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Seu nome" required>
+                                <input type="text" name="nome" class="form-control" placeholder="Seu nome" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Seu email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Seu email" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Seu telefone">
+                                <input type="tel" name="telefone" class="form-control" placeholder="Seu telefone">
                             </div>
                             <div class="form-group">
-                                <select class="form-control">
+                                <select name="assunto" class="form-control">
                                     <option value="">Selecione o assunto</option>
                                     <option value="orcamento">Solicitar Orçamento</option>
                                     <option value="informacoes">Informações sobre Destinos</option>
@@ -248,7 +258,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" placeholder="Sua mensagem" required></textarea>
+                                <textarea name="mensagem" class="form-control" rows="5" placeholder="Sua mensagem" required></textarea>
                             </div>
                             <button type="submit" class="btn btn--primary btn--full-width">Enviar Mensagem</button>
                         </form>
@@ -307,10 +317,14 @@
                 <div class="footer__section">
                     <h4>Newsletter</h4>
                     <p>Receba ofertas especiais e dicas de viagem</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="form-control" placeholder="Seu email" required>
-                        <button type="submit" class="btn btn--primary">Assinar</button>
-                    </form>
+                            <form class="newsletter-form" action="https://formsubmit.co/contato@anhanga.tur.br" method="POST">
+                                <input type="hidden" name="_subject" value="Nova Inscrição Newsletter - Anhangá Turismo">
+                                <input type="hidden" name="_captcha" value="true">
+                                <input type="hidden" name="_template" value="box">
+                                <input type="hidden" name="_next" value="https://anhanga.tur.br?newsletter=enviado">
+                                <input type="email" name="email" class="form-control" placeholder="Seu email" required>
+                                <button type="submit" class="btn btn--primary">Assinar</button>
+                            </form>
                 </div>
             </div>
             <div class="footer__bottom">
@@ -327,18 +341,24 @@
                 <button class="modal__close" id="modal-close">&times;</button>
             </div>
             <div class="modal__body">
-                <form class="orcamento-form" id="orcamento-form">
+                <form class="orcamento-form" id="orcamento-form" action="https://formsubmit.co/contato@anhanga.tur.br" method="POST">
+                    <!-- Configurações do Formsubmit -->
+                    <input type="hidden" name="_subject" value="Nova Solicitação de Orçamento - Anhangá Turismo">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://anhanga.tur.br?orcamento=enviado">
+                    
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Seu nome" required>
+                        <input type="text" name="nome" class="form-control" placeholder="Seu nome" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Seu email" required>
+                        <input type="email" name="email" class="form-control" placeholder="Seu email" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Seu telefone" required>
+                        <input type="tel" name="telefone" class="form-control" placeholder="Seu telefone" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" required>
+                        <select name="destino" class="form-control" required>
                             <option value="">Destino de interesse</option>
                             <option value="jalapao">Jalapão, Tocantins</option>
                             <option value="porto-seguro">Porto Seguro, Bahia</option>
@@ -355,10 +375,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="date" class="form-control" placeholder="Data de partida">
+                        <input type="date" name="data_ida" class="form-control" placeholder="Data de partida" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control">
+                        <select name="num_pessoas" class="form-control" required>
                             <option value="">Número de pessoas</option>
                             <option value="1">1 pessoa</option>
                             <option value="2">2 pessoas</option>
@@ -368,7 +388,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" placeholder="Observações adicionais"></textarea>
+                        <textarea name="observacoes" class="form-control" rows="3" placeholder="Observações adicionais"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full-width">Solicitar Orçamento</button>
                 </form>
