@@ -346,6 +346,24 @@ function initModal() {
             modal.classList.remove('active');
         }
     });
+
+    // Lógica para mostrar/ocultar campo de idades das crianças
+    const numCriancasInput = document.querySelector('#orcamento-form input[placeholder*="crianças"]');
+    const idadesCriancasGroup = document.getElementById('idades-criancas-group');
+    
+    if (numCriancasInput && idadesCriancasGroup) {
+        numCriancasInput.addEventListener('input', (e) => {
+            const numCriancas = parseInt(e.target.value) || 0;
+            if (numCriancas > 0) {
+                idadesCriancasGroup.style.display = 'block';
+                idadesCriancasGroup.querySelector('textarea').required = true;
+            } else {
+                idadesCriancasGroup.style.display = 'none';
+                idadesCriancasGroup.querySelector('textarea').required = false;
+                idadesCriancasGroup.querySelector('textarea').value = '';
+            }
+        });
+    }
 }
 
 // Formulários
@@ -353,27 +371,104 @@ function initForms() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Simular envio
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                form.reset();
+            try {
+                let endpoint = '';
+                let formData = {};
+                
+                if (form.id === 'orcamento-form') {
+                    // Formulário de orçamento
+                    endpoint = '/api/send-quote';
+                    const inputs = form.querySelectorAll('input, select, textarea');
+                    
+                    inputs.forEach(input => {
+                        if (input.type === 'text' && input.placeholder === 'Seu nome') {
+                            formData.nome = input.value;
+                        } else if (input.type === 'email') {
+                            formData.email = input.value;
+                        } else if (input.type === 'tel') {
+                            formData.telefone = input.value;
+                        } else if (input.type === 'text' && input.placeholder.includes('Destino de interesse')) {
+                            formData.destino = input.value;
+                        } else if (input.type === 'date') {
+                            formData.data_partida = input.value;
+                        } else if (input.type === 'number' && input.placeholder.includes('adultos')) {
+                            formData.num_adultos = input.value;
+                        } else if (input.type === 'number' && input.placeholder.includes('crianças')) {
+                            formData.num_criancas = input.value;
+                        } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Idades das crianças')) {
+                            formData.idades_criancas = input.value;
+                        } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Observações')) {
+                            formData.observacoes = input.value;
+                        }
+                    });
+                } else if (form.id === 'contact-form') {
+                    // Formulário de contato
+                    endpoint = '/api/send-contact';
+                    const inputs = form.querySelectorAll('input, select, textarea');
+                    
+                    inputs.forEach(input => {
+                        if (input.type === 'text') {
+                            formData.nome = input.value;
+                        } else if (input.type === 'email') {
+                            formData.email = input.value;
+                        } else if (input.type === 'tel') {
+                            formData.telefone = input.value;
+                        } else if (input.tagName === 'SELECT') {
+                            formData.assunto = input.value;
+                        } else if (input.tagName === 'TEXTAREA') {
+                            formData.mensagem = input.value;
+                        }
+                    });
+                } else {
+                    // Outros formulários (newsletter, etc.) - simular envio
+                    setTimeout(() => {
+                        alert('Inscrição realizada com sucesso!');
+                        form.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1000);
+                    return;
+                }
+                
+                // Enviar dados para o backend
+                const response = await fetch(`https://anhanga-email-backend.onrender.com${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert(result.message || 'Mensagem enviada com sucesso!');
+                    form.reset();
+                    
+                    // Fechar modal se for o formulário de orçamento
+                    if (form.id === 'orcamento-form') {
+                        document.getElementById('orcamento-modal').classList.remove('active');
+                    }
+                } else {
+                    throw new Error(result.error || 'Erro ao enviar mensagem');
+                }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                
-                // Fechar modal se for o formulário de orçamento
-                if (form.id === 'orcamento-form') {
-                    document.getElementById('orcamento-modal').classList.remove('active');
-                }
-            }, 2000);
+            }
         });
     });
 }

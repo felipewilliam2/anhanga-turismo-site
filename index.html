@@ -338,34 +338,20 @@
                         <input type="tel" class="form-control" placeholder="Seu telefone" required>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" required>
-                            <option value="">Destino de interesse</option>
-                            <option value="jalapao">Jalapão, Tocantins</option>
-                            <option value="porto-seguro">Porto Seguro, Bahia</option>
-                            <option value="lencois">Lençóis Maranhenses, MA</option>
-                            <option value="gramado">Gramado, RS</option>
-                            <option value="foz">Foz do Iguaçu, PR</option>
-                            <option value="bonito">Bonito, MS</option>
-                            <option value="chapada">Chapada Diamantina, BA</option>
-                            <option value="amazonia">Amazônia</option>
-                            <option value="pantanal">Pantanal, MT</option>
-                            <option value="ouro-preto">Ouro Preto, MG</option>
-                            <option value="buzios">Búzios, RJ</option>
-                            <option value="fernando-noronha">Fernando de Noronha, PE</option>
-                        </select>
+                        <input type="text" class="form-control" placeholder="Destino de interesse (ex: Jalapão, Porto Seguro, etc.)" required>
                     </div>
                     <div class="form-group">
                         <input type="date" class="form-control" placeholder="Data de partida">
                     </div>
                     <div class="form-group">
-                        <select class="form-control">
-                            <option value="">Número de pessoas</option>
-                            <option value="1">1 pessoa</option>
-                            <option value="2">2 pessoas</option>
-                            <option value="3">3 pessoas</option>
-                            <option value="4">4 pessoas</option>
-                            <option value="5+">5+ pessoas</option>
-                        </select>
+                        <input type="number" class="form-control" placeholder="Número de adultos" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Número de crianças (0 se não houver)" min="0" value="0">
+                    </div>
+                    <div class="form-group" id="idades-criancas-group" style="display: none;">
+                        <textarea class="form-control" rows="2" placeholder="Idades das crianças (ex: 8 anos, 12 anos)"></textarea>
+                        <small style="color: #666; font-size: 12px;">Informe a idade de cada criança separada por vírgula</small>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" rows="3" placeholder="Observações adicionais"></textarea>
