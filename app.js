@@ -348,19 +348,23 @@ function initModal() {
     });
 
     // Lógica para mostrar/ocultar campo de idades das crianças
-    const numCriancasInput = document.querySelector('#orcamento-form input[placeholder*="crianças"]');
-    const idadesCriancasGroup = document.getElementById('idades-criancas-group');
+    const numCriancasInput = document.querySelector("#orcamento-form input[placeholder*=\"crianças\"]");
+    const idadesCriancasContainer = document.getElementById("idades-criancas-container");
     
-    if (numCriancasInput && idadesCriancasGroup) {
-        numCriancasInput.addEventListener('input', (e) => {
-            const numCriancas = parseInt(e.target.value) || 0;
+    if (numCriancasInput && idadesCriancasContainer) {
+        numCriancasInput.addEventListener("input", () => {
+            const numCriancas = parseInt(numCriancasInput.value) || 0;
+            idadesCriancasContainer.innerHTML = ""; // Limpa campos anteriores
+
             if (numCriancas > 0) {
-                idadesCriancasGroup.style.display = 'block';
-                idadesCriancasGroup.querySelector('textarea').required = true;
-            } else {
-                idadesCriancasGroup.style.display = 'none';
-                idadesCriancasGroup.querySelector('textarea').required = false;
-                idadesCriancasGroup.querySelector('textarea').value = '';
+                for (let i = 1; i <= numCriancas; i++) {
+                    const div = document.createElement("div");
+                    div.classList.add("form-group");
+                    div.innerHTML = `
+                        <input type="number" class="form-control idade-crianca-input" placeholder="Idade da Criança ${i}" min="0" required>
+                    `;
+                    idadesCriancasContainer.appendChild(div);
+                }
             }
         });
     }
@@ -393,20 +397,37 @@ function initForms() {
                         if (input.type === 'text' && input.placeholder === 'Seu nome') {
                             formData.nome = input.value;
                         } else if (input.type === 'email') {
-                            formData.email = input.value;
-                        } else if (input.type === 'tel') {
-                            formData.telefone = input.value;
-                        } else if (input.type === 'text' && input.placeholder.includes('Destino de interesse')) {
-                            formData.destino = input.value;
-                        } else if (input.type === 'date') {
+                            formData.email = input.value;                        } else if (input.type === 'date' && input.placeholder === 'Data de partida') {
                             formData.data_partida = input.value;
-                        } else if (input.type === 'number' && input.placeholder.includes('adultos')) {
+                        } else if (input.type === 'date' && input.placeholder === 'Data de retorno') {
+                            formData.data_retorno = input.value;
+                        } else if (input.type === 'number' && input.placeholder === 'Número de adultos') {
                             formData.num_adultos = input.value;
-                        } else if (input.type === 'number' && input.placeholder.includes('crianças')) {
+                        } else if (input.type === 'number' && input.placeholder === 'Número de crianças') {
                             formData.num_criancas = input.value;
-                        } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Idades das crianças')) {
-                            formData.idades_criancas = input.value;
-                        } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Observações')) {
+                        }
+                    });
+
+                    // Coletar idades das crianças
+                    const idadesCriancasInputs = form.querySelectorAll('.idade-crianca-input');
+                    if (idadesCriancasInputs.length > 0) {
+                        formData.idades_criancas = Array.from(idadesCriancasInputs).map(input => input.value).join(', ');
+                    }
+
+                    // Coletar observações
+                    const observacoesInput = form.querySelector('textarea[placeholder*="Observações adicionais"]');
+                    if (observacoesInput) {
+                        formData.observacoes = observacoesInput.value;
+                    }= 'number' && input.placeholder === 'Número de crianças') {
+                            formData.num_criancas = input.value;
+                        }
+                    });
+
+                    // Coletar idades das crianças
+                    const idadesCriancasInputs = form.querySelectorAll('.idade-crianca-input');
+                    if (idadesCriancasInputs.length > 0) {
+                        formData.idades_criancas = Array.from(idadesCriancasInputs).map(input => input.value).join(', ');
+                    } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Observações')) {
                             formData.observacoes = input.value;
                         }
                     });
