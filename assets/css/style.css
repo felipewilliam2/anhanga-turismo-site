@@ -5,7 +5,16 @@
     color: inherit;
 }
 
-.whatsapp-link button {
-    color: inherit;
+.whatsapp-link .btn {
+    color: var(--cor-branco);
+    background-color: var(--cor-secundaria);
+    border: none;
+    display: inline-block;
+}
+
+.whatsapp-link .btn:hover {
+    background-color: #ff9800;
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
 }
 
