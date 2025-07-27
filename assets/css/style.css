@@ -88,7 +88,8 @@
 }
 
 .carousel-nav button {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 77, 64, 0.8);
+    color: var(--cor-branco);
     border: none;
     width: 50px;
     height: 50px;
@@ -103,7 +104,8 @@
 }
 
 .carousel-nav button:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--cor-principal);
+    transform: scale(1.1);
 }
 
 .indicators {
@@ -128,5 +130,72 @@
 .carousel-indicator.active {
     background-color: white;
     transform: scale(1.2);
+}
+
+/* Responsividade do Carrossel */
+@media (max-width: 768px) {
+    .carousel {
+        height: 400px;
+    }
+    
+    .carousel-nav button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        height: 300px;
+    }
+    
+    .carousel-nav button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        margin: 0 5px;
+    }
+    
+    .carousel-slide .slide-content h3 {
+        font-size: 18px;
+    }
+    
+    .carousel-slide .slide-content p {
+        font-size: 14px;
+    }
+}
+
+/* Botão flutuante de WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
