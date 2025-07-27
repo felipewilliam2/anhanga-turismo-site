@@ -1240,3 +1240,79 @@ body {
     }
 }
 
+/* Estilos para o Botão Flutuante de WhatsApp */
+.whatsapp-button {
+    position: fixed; /* Mantém o botão fixo na tela */
+    bottom: 20px;    /* Distância da parte inferior */
+    right: 20px;     /* Distância da parte direita */
+    width: 60px;     /* Largura do botão */
+    height: 60px;    /* Altura do botão */
+    background-color: #25D366; /* Cor de fundo verde do WhatsApp */
+    border-radius: 50%;      /* Deixa o botão redondo */
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); /* Sombra verde para dar profundidade */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Z-index alto para garantir que fique acima de todos os elementos */
+    transition: all 0.3s ease; /* Efeito suave ao passar o mouse */
+    text-decoration: none;
+    animation: whatsappPulse 2s infinite; /* Animação de pulso para chamar atenção */
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1); /* Aumenta um pouco o tamanho ao passar o mouse */
+    background-color: #128C7E; /* Cor mais escura no hover */
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button svg {
+    width: 35px;  /* Tamanho do ícone dentro do botão */
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover svg {
+    transform: scale(1.1);
+}
+
+/* Animação de pulso para o botão do WhatsApp */
+@keyframes whatsappPulse {
+    0% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1);
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .whatsapp-button {
+        bottom: 15px;
+        right: 15px;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .whatsapp-button svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-button {
+        bottom: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .whatsapp-button svg {
+        width: 28px;
+        height: 28px;
+    }
+}

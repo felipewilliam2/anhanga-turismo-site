@@ -347,6 +347,28 @@ function initModal() {
             modal.classList.remove('active');
         }
     });
+
+    // Lógica para mostrar/ocultar campo de idades das crianças
+    const numCriancasInput = document.querySelector("#orcamento-form input[placeholder*=\"crianças\"]");
+    const idadesCriancasContainer = document.getElementById("idades-criancas-container");
+    
+    if (numCriancasInput && idadesCriancasContainer) {
+        numCriancasInput.addEventListener("input", () => {
+            const numCriancas = parseInt(numCriancasInput.value) || 0;
+            idadesCriancasContainer.innerHTML = ""; // Limpa campos anteriores
+
+            if (numCriancas > 0) {
+                for (let i = 1; i <= numCriancas; i++) {
+                    const div = document.createElement("div");
+                    div.classList.add("form-group");
+                    div.innerHTML = `
+                        <input type="number" class="form-control idade-crianca-input" placeholder="Idade da Criança ${i}" min="0" required>
+                    `;
+                    idadesCriancasContainer.appendChild(div);
+                }
+            }
+        });
+    }
 }
 
 // Formulários
@@ -354,27 +376,121 @@ function initForms() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Simular envio
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
-                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                form.reset();
+            try {
+                let endpoint = '';
+                let formData = {};
+                
+                if (form.id === 'orcamento-form') {
+                    // Formulário de orçamento
+                    endpoint = '/api/send-quote';
+                    const inputs = form.querySelectorAll('input, select, textarea');
+                    
+                    inputs.forEach(input => {
+                        if (input.type === 'text' && input.placeholder === 'Seu nome') {
+                            formData.nome = input.value;
+                        } else if (input.type === 'email') {
+                            formData.email = input.value;                        } else if (input.type === 'date' && input.placeholder === 'Data de partida') {
+                            formData.data_partida = input.value;
+                        } else if (input.type === 'date' && input.placeholder === 'Data de retorno') {
+                            formData.data_retorno = input.value;
+                        } else if (input.type === 'number' && input.placeholder === 'Número de adultos') {
+                            formData.num_adultos = input.value;
+                        } else if (input.type === 'number' && input.placeholder === 'Número de crianças') {
+                            formData.num_criancas = input.value;
+                        }
+                    });
+
+                    // Coletar idades das crianças
+                    const idadesCriancasInputs = form.querySelectorAll('.idade-crianca-input');
+                    if (idadesCriancasInputs.length > 0) {
+                        formData.idades_criancas = Array.from(idadesCriancasInputs).map(input => input.value).join(', ');
+                    }
+
+                    // Coletar observações
+                    const observacoesInput = form.querySelector('textarea[placeholder*="Observações adicionais"]');
+                    if (observacoesInput) {
+                        formData.observacoes = observacoesInput.value;
+                    }= 'number' && input.placeholder === 'Número de crianças') {
+                            formData.num_criancas = input.value;
+                        }
+                    });
+
+                    // Coletar idades das crianças
+                    const idadesCriancasInputs = form.querySelectorAll('.idade-crianca-input');
+                    if (idadesCriancasInputs.length > 0) {
+                        formData.idades_criancas = Array.from(idadesCriancasInputs).map(input => input.value).join(', ');
+                    } else if (input.tagName === 'TEXTAREA' && input.placeholder.includes('Observações')) {
+                            formData.observacoes = input.value;
+                        }
+                    });
+                } else if (form.id === 'contact-form') {
+                    // Formulário de contato
+                    endpoint = '/api/send-contact';
+                    const inputs = form.querySelectorAll('input, select, textarea');
+                    
+                    inputs.forEach(input => {
+                        if (input.type === 'text') {
+                            formData.nome = input.value;
+                        } else if (input.type === 'email') {
+                            formData.email = input.value;
+                        } else if (input.type === 'tel') {
+                            formData.telefone = input.value;
+                        } else if (input.tagName === 'SELECT') {
+                            formData.assunto = input.value;
+                        } else if (input.tagName === 'TEXTAREA') {
+                            formData.mensagem = input.value;
+                        }
+                    });
+                } else {
+                    // Outros formulários (newsletter, etc.) - simular envio
+                    setTimeout(() => {
+                        alert('Inscrição realizada com sucesso!');
+                        form.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1000);
+                    return;
+                }
+                
+                // Enviar dados para o backend
+                const response = await fetch(`https://mzhyi8cneojx.manus.space${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert(result.message || 'Mensagem enviada com sucesso!');
+                    form.reset();
+                    
+                    // Fechar modal se for o formulário de orçamento
+                    if (form.id === 'orcamento-form') {
+                        document.getElementById('orcamento-modal').classList.remove('active');
+                    }
+                } else {
+                    throw new Error(result.error || 'Erro ao enviar mensagem');
+                }
+                
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.');
+            } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-                
-                // Fechar modal se for o formulário de orçamento
-                if (form.id === 'orcamento-form') {
-                    document.getElementById('orcamento-modal').classList.remove('active');
-                }
-            }, 2000);
+            }
         });
     });
 }
