@@ -1,3 +1,20 @@
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1993166668158622');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1993166668158622&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -44,7 +61,10 @@
                 </div>
             </div>
             <div class="nav__actions">
-                <button class="btn btn--primary" id="orcamento-btn">Orçamento</button>
+<a href="https://wa.me/551152833309?text=Ol%C3%A1%2C+Gostaria+de+fazer+um+or%C3%A7amento+de+viagem." target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+    <button class="btn btn--primary btn--lg">Orçamento</button>
+</a>
+
                 <div class="nav__toggle" id="nav-toggle">
                     <span></span>
                     <span></span>
@@ -68,31 +88,46 @@
             </div>
         </section>
 
-        <!-- Destinos Populares -->
-        <section class="destinos-populares section">
+        <!-- Ofertas de Destinos Carrossel -->
+        <section class="ofertas section" id="destinos">
             <div class="container">
-                <h2 class="section__title">Destinos Populares</h2>
-                <p class="section__subtitle">Explore os destinos mais procurados do Brasil</p>
-                <div class="destinos__grid" id="destinos-populares">
-                    <!-- Cards serão inseridos via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Destinos Section -->
-        <section class="destinos section" id="destinos">
-            <div class="container">
-                <h2 class="section__title">Todos os Destinos</h2>
-                <div class="destinos__filters">
-                    <button class="filter-btn active" data-filter="todos">Todos</button>
-                    <button class="filter-btn" data-filter="aventura">Aventura</button>
-                    <button class="filter-btn" data-filter="praia">Praia</button>
-                    <button class="filter-btn" data-filter="cultural">Cultural</button>
-                    <button class="filter-btn" data-filter="natureza">Natureza</button>
-                    <button class="filter-btn" data-filter="ecoturismo">Ecoturismo</button>
-                </div>
-                <div class="destinos__grid" id="destinos-grid">
-                    <!-- Cards serão inseridos via JavaScript -->
+                <h2 class="section__title">Ofertas de Destinos</h2>
+                <p class="section__subtitle">Confira nossas melhores ofertas para os destinos mais incríveis</p>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <img src="2.png" alt="Grand Amazon Expedition - Rio Negro - Saída de Reveillon" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="3.png" alt="Grand Amazon Expedition - Rio Negro - Saída de Natal" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="oferta1.png" alt="Jalapão 100 Limites - Embarque São Paulo" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="gramado.png" alt="Gramado - Embarque São Paulo" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="bentogoncalves.png" alt="Bento Gonçalves - Embarque São Paulo" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="FEED-PortoSeguro•BA.png" alt="Porto Seguro - BA - Bahia baixa temporada 2025" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="FEED-ArraialD´Ajuda•BA.png" alt="Arraial D'Ajuda - BA - Bahia baixa temporada 2025" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="FEED-Salvador•BA.png" alt="Salvador - BA - Bahia baixa temporada 2025" />
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="FEED-PraiadoForte•BA.png" alt="Praia do Forte - BA - Bahia baixa temporada 2025" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-btn--prev" id="prevBtn">‹</button>
+                    <button class="carousel-btn carousel-btn--next" id="nextBtn">›</button>
+                    <div class="carousel-indicators" id="indicators"></div>
                 </div>
             </div>
         </section>
@@ -316,6 +351,7 @@
     </svg>
 </a>
 
+    <script src="carousel.js"></script>
 </body>
 </html>
 
